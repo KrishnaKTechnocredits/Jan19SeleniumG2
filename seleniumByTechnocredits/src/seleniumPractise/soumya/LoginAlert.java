@@ -13,7 +13,7 @@ import util.Init;
 
 public class LoginAlert {
 	// Method for validation of alerts in Login page fields
-	public static void VerifyLoginAlert() throws IOException, InterruptedException {
+	public static void verifyLoginAlert() throws IOException, InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
 		Properties prop = PropFileOperation.loadProp();
 		driver.get("http://automationbykrishna.com/#");
@@ -30,8 +30,7 @@ public class LoginAlert {
 		System.out.println("Login Button Clicked");
 		Thread.sleep(1000);
 		Alert alert = driver.switchTo().alert();
-		String alertBlank = "Failed! please enter password";
-		if (alert.getText().equals(alertBlank)) {
+		if (alert.getText().equals("Failed! please enter password")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -46,8 +45,7 @@ public class LoginAlert {
 		System.out.println("Login Button Clicked");
 		driver.switchTo().alert();
 		Thread.sleep(2000);
-		String alertPasswordBlank = "Failed! please enter password";
-		if (alert.getText().equals(alertPasswordBlank)) {
+		if (alert.getText().equals("Failed! please enter password")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -64,8 +62,7 @@ public class LoginAlert {
 		System.out.println("Login Button Clicked");
 		driver.switchTo().alert();
 		Thread.sleep(2000);
-		String alertPasswordShortlt8 = "Failed! please enter strong password";
-		if (alert.getText().equals(alertPasswordShortlt8)) {
+		if (alert.getText().equals("Failed! please enter strong password")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -82,8 +79,7 @@ public class LoginAlert {
 		System.out.println("Login Button Clicked");
 		driver.switchTo().alert();
 		Thread.sleep(2000);
-		String alertPasswordShorteq8 = "Failed! please enter strong password";
-		if (alert.getText().equals(alertPasswordShorteq8)) {
+		if (alert.getText().equals("Failed! please enter strong password")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -100,8 +96,7 @@ public class LoginAlert {
 		System.out.println("Login Button Clicked");
 		driver.switchTo().alert();
 		Thread.sleep(2000);
-		String alertPasswordShortgt8 = "Success!";
-		if (alert.getText().equals(alertPasswordShortgt8)) {
+		if (alert.getText().equals("Success!")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -112,6 +107,6 @@ public class LoginAlert {
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		VerifyLoginAlert();
+		verifyLoginAlert();
 	}
 }

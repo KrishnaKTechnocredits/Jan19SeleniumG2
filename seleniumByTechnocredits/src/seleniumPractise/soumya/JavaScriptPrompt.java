@@ -14,7 +14,7 @@ import util.Init;
 
 public class JavaScriptPrompt {
 	// Method for validation of JavaScript Prompt alert from different examples of alerts section by clicking on JavaScript Prompt button
-	public static void JavaScriptAlert() throws IOException, InterruptedException {
+	public static void javaScriptAlert() throws IOException, InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
 		Properties prop = PropFileOperation.loadProp();
 		driver.get("http://automationbykrishna.com/index.html");
@@ -28,17 +28,14 @@ public class JavaScriptPrompt {
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		element.click();
 		System.out.println("Javascript Prompt Clicked");
-		String alertText = "Please enter your name :";
 		Alert alert = driver.switchTo().alert();
-		if (alert.getText().equals(alertText)) {
+		if (alert.getText().equals("Please enter your name :")) {
 			System.out.println("Alert: " + alert.getText());
 			alert.sendKeys(prop.getProperty("firstname"));
 			Thread.sleep(1000);
-			String preDefinedStringAccept = "Hello " + prop.getProperty("firstname") + "! How are you today?";
 			alert.accept();
-			String strAccept = driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText();
-			if (strAccept.equals(preDefinedStringAccept)) {
-				System.out.println(strAccept);
+			if (driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText().equals("Hello " + prop.getProperty("firstname") + "! How are you today?")) {
+				System.out.println(driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText());
 				System.out.println("Alert is successfully accepted and message is correct");
 			}
 			js.executeScript("arguments[0].scrollIntoView(true)", element);
@@ -46,22 +43,20 @@ public class JavaScriptPrompt {
 			System.out.println("Javascript Prompt Clicked");
 			alert = driver.switchTo().alert();
 			Thread.sleep(1000);
-			if (alert.getText().equals(alertText)) {
+			if (alert.getText().equals("Please enter your name :")) {
 				System.out.println("Alert: " + alert.getText());
-				String preDefinedStringReject = "User cancelled the prompt.";
 				alert.dismiss();
-				String strReject = driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText();
-				if (strReject.equals(preDefinedStringReject)) {
-					System.out.println(strReject);
+				if (driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText().equals("User cancelled the prompt.")) {
+					System.out.println(driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText());
 					System.out.println("Alert is successfully cancelled and message is correct");
 				}
 			}
-			driver.close();
-			System.out.println("\n" + "Verification Completed..Window Closed!!!");
 		}
+		driver.close();
+		System.out.println("\n" + "Verification Completed..Window Closed!!!");
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		JavaScriptAlert();
+		javaScriptAlert();
 	}
 }

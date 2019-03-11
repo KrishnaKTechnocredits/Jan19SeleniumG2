@@ -14,7 +14,7 @@ import util.Init;
 public class RegistrationAlerts {
 
 	// Method for validation of alerts in registration page fields
-	public static void BlankFieldAlertValidation() throws InterruptedException, IOException {
+	public static void blankFieldAlertValidation() throws InterruptedException, IOException {
 		WebDriver driver = Init.initChromeDriver();
 		Properties prop = PropFileOperation.loadProp();
 		driver.get("http://automationbykrishna.com/index.html");
@@ -35,8 +35,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		Alert alert = driver.switchTo().alert();
-		String alertFullname = "Full name can't be blank";
-		if (alert.getText().equals(alertFullname)) {
+		if (alert.getText().equals("Full name can't be blank")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -53,8 +52,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertAdress = "address cannot be blank";
-		if (alert.getText().equals(alertAdress)) {
+		if (alert.getText().equals("address cannot be blank")) {
 			System.out.println("Alert: " + alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -70,8 +68,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertEmail = "Please enter email id";
-		if (alert.getText().equals(alertEmail)) {
+		if (alert.getText().equals("Please enter email id")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -88,8 +85,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertWrongEmail = "Please use correct email format";
-		if (alert.getText().equals(alertWrongEmail)) {
+		if (alert.getText().equals("Please use correct email format")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -106,8 +102,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertCity = "Please enter City";
-		if (alert.getText().equals(alertCity)) {
+		if (alert.getText().equals("Please enter City")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -123,8 +118,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertOrganization = "Please enter your current organization";
-		if (alert.getText().equals(alertOrganization)) {
+		if (alert.getText().equals("Please enter your current organization")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -149,8 +143,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertUsername = "Username is mandatory field.";
-		if (alert.getText().equals(alertUsername)) {
+		if (alert.getText().equals("Username is mandatory field.")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -167,8 +160,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertUsernameMismatch = "Username length should be greater then 5 characters.";
-		if (alert.getText().equals(alertUsernameMismatch)) {
+		if (alert.getText().equals("Username length should be greater then 5 characters.")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -185,8 +177,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertPassword = "password is mandatory field.";
-		if (alert.getText().equals(alertPassword)) {
+		if (alert.getText().equals("password is mandatory field.")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -202,8 +193,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertReenterPassword = "please reenter password";
-		if (alert.getText().equals(alertReenterPassword)) {
+		if (alert.getText().equals("please reenter password")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -220,8 +210,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertReenterPasswordMatch = "retype password donot match.";
-		if (alert.getText().equals(alertReenterPasswordMatch)) {
+		if (alert.getText().equals("retype password donot match.")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -229,8 +218,7 @@ public class RegistrationAlerts {
 					alert.getText() + " Reenter Password mismatch input field validation prompt is not correct");
 		}
 
-		// Validation of alert for not checking terms of service and policy
-		// checkbox
+		// Validation of alert for not checking terms of service and policy checkbox
 		System.out.println("\n" + "Validation 12:");
 		System.out.println("Reenter Password");
 		elePassword.clear();
@@ -240,8 +228,7 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertTerms = "Please agree to terms of service and privacy policy";
-		if (alert.getText().equals(alertTerms)) {
+		if (alert.getText().equals("Please agree to terms of service and privacy policy")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
 		} else {
@@ -264,18 +251,17 @@ public class RegistrationAlerts {
 		System.out.println("Submit button clicked");
 		Thread.sleep(1000);
 		driver.switchTo().alert();
-		String alertSubmit = "Success";
-		if (alert.getText().equals(alertSubmit)) {
+		if (alert.getText().equals("Success")) {
 			System.out.println(alert.getText() + " ..Alert accepted");
 			alert.accept();
-			driver.close();
-			System.out.println("\n"+"Verification Completed..Window Closed!!!");
 		} else {
 			System.out.println(alert.getText() + " Submit alert validation prompt is not correct");
 		}
+		driver.close();
+		System.out.println("\n"+"Verification Completed..Window Closed!!!");
 	}
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		BlankFieldAlertValidation();
+		blankFieldAlertValidation();
 	}
 }

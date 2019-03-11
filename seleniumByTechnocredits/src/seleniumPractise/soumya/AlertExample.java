@@ -26,14 +26,13 @@ public class AlertExample {
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		element.click();
 		System.out.println("Alert Clicked");
-		String alertText = "You must be TechnoCredits student!!";
 		Alert alert = driver.switchTo().alert();
-		if (alert.getText().equals(alertText)) {
+		if (alert.getText().equals("You must be TechnoCredits student!!")) {
 			System.out.println("Alert: " + alert.getText() + "... Alert accepted");
 			alert.accept();
-			driver.close();
-			System.out.println("\n" + "Verification Completed..Window Closed!!!");
 		}
+		driver.close();
+		System.out.println("\n" + "Verification Completed..Window Closed!!!");
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {

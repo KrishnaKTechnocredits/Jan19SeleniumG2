@@ -30,9 +30,9 @@ public class AlertDemo {
 		if (alert.getText().equals(alertText)) {
 			System.out.println("Alert: " + alert.getText() + "... Alert accepted");
 			alert.accept();
-			driver.close();
-			System.out.println("\n"+"Verification Completed..Window Closed!!!");
 		}
+		driver.close();
+		System.out.println("\n"+"Verification Completed..Window Closed!!!");
 	}
 
 	public static void main(String[] args) throws InterruptedException, IOException {

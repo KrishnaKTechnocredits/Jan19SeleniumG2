@@ -13,7 +13,7 @@ import util.Init;
 
 public class JavaScriptConfirmation {
 	// Method for validation of JavaScript Confirmation alert from different examples of alerts section by clicking on JavaScript Confirmation button
-	public static void JavaScriptConfirmationAlert() throws IOException, InterruptedException {
+	public static void javaScriptConfirmationAlert() throws IOException, InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
 		driver.get("http://automationbykrishna.com/index.html");
 		System.out.println("URL opened");
@@ -26,16 +26,13 @@ public class JavaScriptConfirmation {
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
 		element.click();
 		System.out.println("Javascript Confirmation Clicked");
-		String alertText = "Are you are doing your homework regularly, Press Okay else Cancel!!";
 		Alert alert = driver.switchTo().alert();
 		Thread.sleep(1000);
-		if (alert.getText().equals(alertText)) {
+		if (alert.getText().equals("Are you are doing your homework regularly, Press Okay else Cancel!!")) {
 			System.out.println("Alert: " + alert.getText());
-			String preDefinedStringAccept = "You pressed OK!";
 			alert.accept();
-			String strAccept = driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText();
-			if (strAccept.equals(preDefinedStringAccept)) {
-				System.out.println(strAccept);
+			if (driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText().equals("You pressed OK!")) {
+				System.out.println(driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText());
 				System.out.println("Alert is successfully accepted and message is correct");
 			}
 			js.executeScript("arguments[0].scrollIntoView(true)", element);
@@ -43,22 +40,20 @@ public class JavaScriptConfirmation {
 			System.out.println("Javascript Confirmation Clicked");
 			alert = driver.switchTo().alert();
 			Thread.sleep(1000);
-			if (alert.getText().equals(alertText)) {
+			if (alert.getText().equals("Are you are doing your homework regularly, Press Okay else Cancel!!")) {
 				System.out.println("Alert: " + alert.getText());
-				String preDefinedStringReject = "You pressed Cancel!";
 				alert.dismiss();
-				String strReject = driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText();
-				if (strReject.equals(preDefinedStringReject)) {
-					System.out.println(strReject);
+				if (driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText().equals("You pressed Cancel!")) {
+					System.out.println(driver.findElement(By.xpath("//p[@id='pgraphdemo']")).getText());
 					System.out.println("Alert is successfully cancelled and message is correct");
 				}
 			}
-			driver.close();
-			System.out.println("\n" + "Verification Completed..Window Closed!!!");
 		}
+		driver.close();
+		System.out.println("\n" + "Verification Completed..Window Closed!!!");
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		JavaScriptConfirmationAlert();
+		javaScriptConfirmationAlert();
 	}
 }
