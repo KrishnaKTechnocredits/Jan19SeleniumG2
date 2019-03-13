@@ -15,6 +15,15 @@ public class Assignment1_6 {
 		WebDriver driver = Init.initChromeDriver();
 		driver.get("http://automationbykrishna.com/#");
 		Thread.sleep(2000);
+		Assignment1_6 obj1 = new Assignment1_6();
+		obj1.registrationFieldValidations(driver);
+		Thread.sleep(1000);
+		driver.close();
+	}
+
+	// below method will navigate to Registration and check validation on each
+	// field of Registration functionality
+	public void registrationFieldValidations(WebDriver driver) throws InterruptedException {
 		driver.findElement(By.xpath("//a[text()='Registration']")).click();
 		Thread.sleep(1000);
 

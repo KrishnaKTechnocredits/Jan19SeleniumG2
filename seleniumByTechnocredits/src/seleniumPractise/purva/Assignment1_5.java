@@ -14,6 +14,15 @@ public class Assignment1_5 {
 		WebDriver driver = Init.initChromeDriver();
 		driver.get("http://automationbykrishna.com/#");
 		Thread.sleep(1000);
+		Assignment1_5 obj1 = new Assignment1_5();
+		obj1.passwordFieldValidation(driver);
+		driver.close();
+	}
+
+	// method will navigate till password field and start validation on password
+	// field
+	public void passwordFieldValidation(WebDriver driver) throws InterruptedException {
+
 		// clicked on registration page
 		driver.findElement(By.xpath("//a[@id='registration2']")).click();
 		Thread.sleep(1000);
@@ -105,6 +114,5 @@ public class Assignment1_5 {
 			}
 		}
 		alert3.accept();
-
 	}
 }

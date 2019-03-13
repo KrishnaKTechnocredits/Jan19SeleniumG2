@@ -13,16 +13,21 @@ import util.Init;
 public class Assignment1_2 {
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
+		Assignment1_2 obj1 = new Assignment1_2();
+		obj1.alertButtonValidation(driver);
+		driver.close();
+	}
+
+	public void alertButtonValidation(WebDriver driver) throws InterruptedException {
 		driver.get("http://automationbykrishna.com/#");
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//a[text()='Basic Elements']")).click();
 		Thread.sleep(400);
-
 		WebElement element = driver
 				.findElement(By.xpath("//button[@class='btn btn-success' or @id='javascriptAlert']"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true)", element);
-		//clicked on alert button in below line
+		// clicked on alert button in below line
 		element.click();
 		System.out.println("Successfully clicked on Alert button");
 		String expected = "You must be TechnoCredits student!!";
@@ -30,14 +35,15 @@ public class Assignment1_2 {
 		String actual = alert1.getText();
 		System.out.println("Expected text: " + expected);
 		System.out.println("Actual text: " + actual);
-		//here in below code we are checking if text on alert and hardcoded text match
+		// here in below code we are checking if text on alert and hardcoded
+		// text match
 		if (expected.equals(actual))
 			System.out.println("String match");
 		else
 			System.out.println("Strings dont match");
 		Thread.sleep(3000);
 		alert1.accept();
-		
+		Thread.sleep(2000);
 
 	}
 }

@@ -10,8 +10,15 @@ import util.Init;
 public class Assignment1_1 {
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
+		Assignment1_1 obj1 = new Assignment1_1();
+		obj1.SubmitButtonValidation(driver);
+		driver.close();
+		
+	}
+
+	public void SubmitButtonValidation(WebDriver driver) throws InterruptedException {
 		driver.get("http://automationbykrishna.com/#");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		driver.findElement(By.xpath("//a[text()='Basic Elements']")).click();
 		Thread.sleep(400);
 		String firstname = "Purva";
@@ -34,6 +41,6 @@ public class Assignment1_1 {
 
 		Thread.sleep(2000);
 		driver.switchTo().alert().accept();
-
+		Thread.sleep(2000);
 	}
 }
