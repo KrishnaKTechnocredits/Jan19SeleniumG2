@@ -17,7 +17,6 @@ public class Q4_JavaScript_Prompt {
 	}
 	public static void javaScriptPromt_Msg(WebDriver driver) throws InterruptedException{
 		
-		driver.manage().window().maximize();
 		driver.get("http://automationbykrishna.com/#");
 		driver.findElement(By.partialLinkText("asic Ele")).click();
 		Thread.sleep(3000);

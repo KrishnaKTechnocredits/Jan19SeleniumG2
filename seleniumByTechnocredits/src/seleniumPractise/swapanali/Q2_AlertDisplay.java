@@ -21,7 +21,6 @@ public class Q2_AlertDisplay {
 	public static void alertCompare(WebDriver driver) throws IOException, InterruptedException {
 
 		driver.get("http://automationbykrishna.com/#");
-		driver.manage().window().maximize();
 		System.out.println("URL opened");
 		Thread.sleep(3000);
 		driver.findElement(By.partialLinkText("asic Ele")).click();

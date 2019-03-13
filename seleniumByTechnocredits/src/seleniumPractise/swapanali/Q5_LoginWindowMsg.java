@@ -16,7 +16,6 @@ public class Q5_LoginWindowMsg {
 
 	public static void loginWindow_msg(WebDriver driver) throws InterruptedException {
 
-		driver.manage().window().maximize();
 		driver.get("http://automationbykrishna.com/#");
 		driver.findElement(By.xpath("//a[contains(@id,'registration2')]")).click();
 		Thread.sleep(3000);

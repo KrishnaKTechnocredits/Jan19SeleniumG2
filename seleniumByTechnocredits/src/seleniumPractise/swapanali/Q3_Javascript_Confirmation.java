@@ -17,7 +17,7 @@ public class Q3_Javascript_Confirmation {
 
 	}
 	public static void Confirmation_msg(WebDriver driver) throws InterruptedException{
-		driver.manage().window().maximize();
+		
 		driver.get("http://automationbykrishna.com/#");
 		driver.findElement(By.partialLinkText("asic Ele")).click();
 		Thread.sleep(3000);
