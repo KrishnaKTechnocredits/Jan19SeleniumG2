@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import util.Init;
+
 public class KrishnaAutoRegistrationBlank_Assignment1 {
 
 	static void scrollBar(WebDriver driver, WebElement e) {
@@ -16,10 +18,10 @@ public class KrishnaAutoRegistrationBlank_Assignment1 {
 
 	public static void main(String[] args) throws InterruptedException 
 	{
-		System.setProperty("webdriver.chrome.driver","C:\\Work Docs\\Java\\Class\\3rd Weekend\\Eclipse\\resources\\chromedriver_win32\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		//System.setProperty("webdriver.chrome.driver","C:\\Work Docs\\Java\\Class\\3rd Weekend\\Eclipse\\resources\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = Init.initChromeDriver();
 		driver.get("http://www.automationbykrishna.com/#");
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		KrishnaAutoRegistrationBlank_Assignment1 kar = new KrishnaAutoRegistrationBlank_Assignment1();
 		kar.alertDemoValidation(driver);  //1st task of assignment
 		kar.alertValidation(driver);   //2nd task of assignment
