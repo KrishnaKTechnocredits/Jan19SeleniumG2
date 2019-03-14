@@ -5,6 +5,9 @@ package seleniumPractise.vrushali;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import util.Init;
 
@@ -15,13 +18,16 @@ public class AlertOK {
 
 		driver.findElement(By.xpath("//a[@id= 'basicelements']")).click();
 		System.out.println("Basic element tab clicked");
-		Thread.sleep(3000);
+			
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebElement element1 = driver.findElement(By.xpath("//button[starts-with(@id,'javascriptAlert')]"));
 
-		driver.findElement(By.xpath("//button[starts-with(@id,'javascriptAlert')]")).click();
+		WebElement javaSriptAlert = wait.until(ExpectedConditions.visibilityOf(element1));
+		javaSriptAlert.click();
+
 		System.out.println("Alert button clicked");
 
 		String expectedText = "You must be TechnoCredits student!!";
-		Thread.sleep(2000);
 
 		Alert alert = driver.switchTo().alert();
 		String actualText = alert.getText();
@@ -37,7 +43,7 @@ public class AlertOK {
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
 		AlertOK.alertOkValidation(driver);
-		driver.close();
+		driver.quit();
 
 	}
 }

@@ -6,6 +6,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import util.Init;
 
@@ -13,22 +16,25 @@ public class JavascriptConfirmation {
 
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = Init.initChromeDriver();
-		JavascriptConfirmation.JavascriptConfirmationOK(driver);
-		JavascriptConfirmation.JavascriptConfirmationCancel(driver);
-		driver.close();
-
-	}
-
-	// Method to validate message after accepting (OK) javaScript Confirmation
-	// alert
-	public static void JavascriptConfirmationOK(WebDriver driver) throws InterruptedException {
 
 		driver.get("http://automationbykrishna.com/#");
 		driver.findElement(By.xpath("//a[@id= 'basicelements']")).click();
 		System.out.println("Basic element tab clicked");
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-		driver.findElement(By.xpath("//button[@id = 'javascriptConfirmBox' ][@type='submit']")).click();
+		JavascriptConfirmation.JavascriptConfirmationOK(driver);
+		JavascriptConfirmation.JavascriptConfirmationCancel(driver);
+		driver.quit();
+
+	}
+
+	// Method to validate message after accepting (OK) javaScript Confirmation alert
+	public static void JavascriptConfirmationOK(WebDriver driver) throws InterruptedException {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+
+		WebElement element = driver.findElement(By.xpath("//button[@id = 'javascriptConfirmBox' ][@type='submit']"));
+		WebElement jsWait = wait.until(ExpectedConditions.visibilityOf(element));
+		jsWait.click();
 		System.out.println("Javascript Confirmation button clicked");
 
 		driver.switchTo().alert().accept();
@@ -43,16 +49,14 @@ public class JavascriptConfirmation {
 
 	}
 
-	// Method to validate message after dismissing (Cancel) javaScript
-	// Confirmation alert
+	// Method to validate message after dismissing (Cancel) javaScript Confirmation alert
 	public static void JavascriptConfirmationCancel(WebDriver driver) throws InterruptedException {
 
-		driver.get("http://automationbykrishna.com/#");
-		driver.findElement(By.xpath("//a[@id= 'basicelements']")).click();
-		System.out.println("Basic element tab clicked");
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 
-		driver.findElement(By.xpath("//button[@id = 'javascriptConfirmBox' ][@type='submit']")).click();
+		WebElement element1 = driver.findElement(By.xpath("//button[@id = 'javascriptConfirmBox' ][@type='submit']"));
+		WebElement jsButton = wait.until(ExpectedConditions.visibilityOf(element1));
+		jsButton.click();
 		System.out.println("Javascript Confirmation button clicked");
 
 		driver.switchTo().alert().dismiss();

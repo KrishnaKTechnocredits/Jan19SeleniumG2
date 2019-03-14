@@ -2,25 +2,39 @@
 
 package seleniumPractise.vrushali;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import util.Init;
 
 public class JavascriptPrompt {
 
-	// Method to validate name after accepting Javascript Promp alert.
-	public static void javascriptPropmtOK(WebDriver driver) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = Init.initChromeDriver();
 
 		driver.get("http://automationbykrishna.com/#");
 		driver.findElement(By.xpath("//a[@id= 'basicelements']")).click();
 		System.out.println("Basic element tab clicked");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		driver.findElement(By.cssSelector("button[id='javascriptPromp']")).click();
+		JavascriptPrompt.javascriptPropmtOK(driver);
+		JavascriptPrompt.javascriptPropmtCancel(driver);
+
+		driver.quit();
+
+	}
+
+	// Method to validate name after accepting Javascript Promp alert.
+	public static void javascriptPropmtOK(WebDriver driver) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+
+		WebElement element = driver.findElement(By.cssSelector("button[id='javascriptPromp']"));
+		WebElement jspButton = wait.until(ExpectedConditions.visibilityOf(element));
+		jspButton.click();
 		System.out.println("Javascript Prompt button clicked");
 
 		String name = "Vrushali";
@@ -46,12 +60,11 @@ public class JavascriptPrompt {
 	// Method to validate name after dismiss (Cancel) Javascript Promp alert.
 	public static void javascriptPropmtCancel(WebDriver driver) throws InterruptedException {
 
-		driver.get("http://automationbykrishna.com/#");
-		driver.findElement(By.xpath("//a[@id= 'basicelements']")).click();
-		System.out.println("Basic element tab clicked");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 
-		driver.findElement(By.cssSelector("button[id='javascriptPromp']")).click();
+		WebElement element = driver.findElement(By.cssSelector("button[id='javascriptPromp']"));
+		WebElement jspButton = wait.until(ExpectedConditions.visibilityOf(element));
+		jspButton.click();
 		System.out.println("Javascript Prompt button clicked");
 
 		String name = "Vrushali";
@@ -65,18 +78,10 @@ public class JavascriptPrompt {
 		System.out.println("Actual Text after acceptng alert: " + actualOKText);
 		// Validating actual and expected text
 		if (actualOKText.equals("User cancelled the prompt.")) {
-			System.out.println("Javascript Prompt Cancelled");
+			System.out.println("Javascript Prompt Cancelled, Test Case passed");
 		} else {
 			System.out.println(" validation failed");
 		}
 	}
 
-	public static void main(String[] args) throws InterruptedException {
-		WebDriver driver = Init.initChromeDriver();
-		JavascriptPrompt.javascriptPropmtOK(driver);
-		JavascriptPrompt.javascriptPropmtCancel(driver);
-
-		driver.quit();
-
-	}
 }
