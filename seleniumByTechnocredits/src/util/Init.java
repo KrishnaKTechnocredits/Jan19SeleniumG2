@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Init {
 
 	public static WebDriver start() {
-		String path = "D:\\TC\\Jan19SeleniumRepo\\chromedriver.exe";
+		String path = ConstantPath.CHROME_EXE_PATH;
 		System.setProperty("webdriver.chrome.driver", path);
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
